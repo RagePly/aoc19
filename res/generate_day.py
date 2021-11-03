@@ -3,6 +3,9 @@ from sys import argv
 
 SOURCE_DIR = "src"
 CONTENT = """// Conditional Compilation
+
+pub const WAS_COMPILED: bool = cfg!(feature = "day#DAY#");
+
 #[cfg(not(feature = "day#DAY#"))]
 pub fn part1(_source: String) -> String {
     super::comp_features::fetch_default(#DAY#, 1)
@@ -16,13 +19,13 @@ pub fn part2(_source: String) -> String {
 // v START SOLUTION v
 
 #[cfg(feature = "day#DAY#")]
-pub fn part1(source: String) -> i32 {
-    -1
+pub fn part1(source: String) -> String {
+    String::from("not implemented")
 }
 
 #[cfg(feature = "day#DAY#")]
-pub fn part2(source: String) -> i32 {
-    -1
+pub fn part2(source: String) -> String {
+    String::from("not implemented")
 }
 """
 

@@ -2,6 +2,30 @@ use std::time::Instant;
 
 pub mod comp_features;
 #[allow(dead_code)] mod day1;
+#[allow(dead_code)] mod day2;
+#[allow(dead_code)] mod day3;
+#[allow(dead_code)] mod day4;
+#[allow(dead_code)] mod day5;
+#[allow(dead_code)] mod day6;
+#[allow(dead_code)] mod day7;
+#[allow(dead_code)] mod day8;
+#[allow(dead_code)] mod day9;
+#[allow(dead_code)] mod day10;
+#[allow(dead_code)] mod day11;
+#[allow(dead_code)] mod day12;
+#[allow(dead_code)] mod day13;
+#[allow(dead_code)] mod day14;
+#[allow(dead_code)] mod day15;
+#[allow(dead_code)] mod day16;
+#[allow(dead_code)] mod day17;
+#[allow(dead_code)] mod day18;
+#[allow(dead_code)] mod day19;
+#[allow(dead_code)] mod day20;
+#[allow(dead_code)] mod day21;
+#[allow(dead_code)] mod day22;
+#[allow(dead_code)] mod day23;
+#[allow(dead_code)] mod day24;
+#[allow(dead_code)] mod day25;
 
 const FORMAT_PART_WIDTH: usize = 13;
 const FORMAT_ANSWER_WIDTH: usize = 64;
@@ -27,17 +51,21 @@ macro_rules! execute_task {
 
 macro_rules! execute_day {
     ($day: path) => {
-        let file_path = format!("{}{}.txt", DATA_FOLDER, stringify!($day));
-        match std::fs::read_to_string(file_path.clone())  {
-            Ok(source) => {
-                use $day as base;
-                execute_task!(base::part1, source.clone());
-                execute_task!(base::part2, source);
+        {
+            use $day as base;
+            if cfg!(feature = "use_default") || base::WAS_COMPILED {
+                let file_path = format!("{}{}.txt", DATA_FOLDER, stringify!($day));
+                match std::fs::read_to_string(file_path.clone())  {
+                    Ok(source) => {
+                        execute_task!(base::part1, source.clone());
+                        execute_task!(base::part2, source);
+                    }
+                    Err(_) => println!("{0:<2$} puzzle input (file {1}) not found!", 
+                        format!("{}:", stringify!($day)), 
+                        file_path, 
+                        FORMAT_PART_WIDTH)
+                }
             }
-            Err(_) => println!("{0:<2$} puzzle input (file {1}) not found!", 
-                format!("{}:", stringify!($day)), 
-                file_path, 
-                FORMAT_PART_WIDTH)
         }
     };
 }
@@ -50,4 +78,28 @@ fn main() {
     );
     println!("{1:-<0$}", FORMAT_TOTAL_WIDTH, "");
     execute_day!(day1);
+    execute_day!(day2);
+    execute_day!(day3);
+    execute_day!(day4);
+    execute_day!(day5);
+    execute_day!(day6);
+    execute_day!(day7);
+    execute_day!(day8);
+    execute_day!(day9);
+    execute_day!(day10);
+    execute_day!(day11);
+    execute_day!(day12);
+    execute_day!(day13);
+    execute_day!(day14);
+    execute_day!(day15);
+    execute_day!(day16);
+    execute_day!(day17);
+    execute_day!(day18);
+    execute_day!(day19);
+    execute_day!(day20);
+    execute_day!(day21);
+    execute_day!(day22);
+    execute_day!(day23);
+    execute_day!(day24);
+    execute_day!(day25);
 }
