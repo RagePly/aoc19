@@ -1,6 +1,7 @@
 use std::time::Instant;
 
 pub mod comp_features;
+pub mod intcode;
 #[allow(dead_code, unused_variables)] mod day1;
 #[allow(dead_code, unused_variables)] mod day2;
 #[allow(dead_code, unused_variables)] mod day3;
