@@ -1,7 +1,7 @@
 use std::time::Instant;
 
 pub mod comp_features;
-mod day1;
+#[allow(dead_code)] mod day1;
 
 const FORMAT_PART_WIDTH: usize = 13;
 const FORMAT_ANSWER_WIDTH: usize = 64;
